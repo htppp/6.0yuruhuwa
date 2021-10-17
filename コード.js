@@ -65,15 +65,30 @@ function GetReductionRate( cells, index ) {
 	return rate;
 }
 
+// 選択したセルを強制的に再計算させます
+function RecalcCell( editRow, editColumn ) {
+	var value = sheet_tl.getRange( editRow, editColumn ).getValue(); // セルの値を取得
+	if( value.slice( 0, 1 ) !== "=" ) { return; }
+	sheet_tl.getRange( editRow, editColumn ).setValue( "" );    // 一度消す
+	sheet_tl.getRange( editRow, editColumn ).setValue( value ); // 再度設定する
+}
+
 // 指定セルに関連したセルを再計算する
 function CalcCell( editRow, editColumn ) {
 	if( editColumn >= 8 && editRow >= 2 && editRow <= 36 ) {
-		if( editRow >= 8 && editRow >= 10 ) {         // T1の軽減 H,I,J (8,9,10)
-		} else if( editRow >= 14 && editRow >= 16 ) { // T2の軽減 N,O,P (14,15,16)
-		} else if( editRow >= 21 && editRow >= 23 ) { // H1の軽減 U,V,W (21,22,23)
-		} else if( editRow >= 27 && editRow >= 29 ) { // H1の軽減 AA,AB,AC (27,28,29)
-		} else if( editRow >= 34 && editRow >= 36 ) { // DPSの軽減 AH,AI,AJ (34,35,36)
-		}
+		// T1の軽減 H,I,J (8,9,10)
+		// T2の軽減 N,O,P (14,15,16)
+		// H1の軽減 U,V,W (21,22,23)
+		// H1の軽減 AA,AB,AC (27,28,29)
+		// DPSの軽減 AH,AI,AJ (34,35,36)
+		let index = [ 8, 14, 21, 27, 34 ]; // T1, T2, H1, H2, DPSのバフ欄のそれぞれ一番左のセルの列番号
+		index.forEach( function( i ) {
+			if( editRow >= i && editRow >= i + 2 ) {
+				RecalcCell( editRow, i + 3 ); // i = 8 なら K列
+				RecalcCell( editRow, i + 4 ); // i = 8 なら L列
+				RecalcCell( editRow, i + 5 ); // i = 8 なら M列
+			}
+		} );
 	}
 }
 
@@ -88,7 +103,8 @@ function onEdit( e ) { // 何か操作されたとき呼ばれるコールバッ
 	}
 }
 
-// 以下の引用元URL https://gist.github.com/katz/ab751588580469b35e08
+// 以下 シート内の範囲選択したセルを再計算させるアドオン
+// 引用元URL https://gist.github.com/katz/ab751588580469b35e08
 // サイドバーとダイアログを表示する項目を含むカスタムメニューを追加します。
 function onOpen( e ) {
 	SpreadsheetApp.getUi().createAddonMenu().addItem( 'Re-calculate selected cells', 'recalculate' ).addToUi();
