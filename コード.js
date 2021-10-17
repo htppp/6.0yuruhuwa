@@ -106,13 +106,13 @@ function onEdit( e ) { // 何か操作されたとき呼ばれるコールバッ
 	}
 }
 
-function onClick( e ) {
+function onSelectionChange( e ) {
 	//操作されたセルの情報 シート名、行、列を取得
 	var sheet      = e.range.getSheet().getSheetName();
 	var editRow    = e.range.getRow();
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
-		Logger.log( "Clicked on R" + editRow + "C" + editColumn );
+		Logger.log( "onSelectionChange on R" + editRow + "C" + editColumn );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
 }
