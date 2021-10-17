@@ -78,7 +78,7 @@ function RecalcCell( editRow, editColumn ) {
 
 // 指定セルに関連したセルを再計算する
 function CalcCell( editRow, editColumn ) {
-	if( editColumn >= 8 && editRow >= 2 && editRow <= 36 ) {
+	if( editRow >= 8 && editColumn >= 2 && editColumn <= 36 ) {
 		// T1の軽減 H,I,J (8,9,10)
 		// T2の軽減 N,O,P (14,15,16)
 		// H1の軽減 U,V,W (21,22,23)
@@ -95,16 +95,16 @@ function CalcCell( editRow, editColumn ) {
 	}
 }
 
-function onEdit( e ) { // 何か操作されたとき呼ばれるコールバック関数
-	//操作されたセルの情報 シート名、行、列を取得
-	var sheet      = e.range.getSheet().getSheetName();
-	var editRow    = e.range.getRow();
-	var editColumn = e.range.getColumn();
-	if( sheet == 'TL' ) {
-		Logger.log( "Edited on R" + editRow + "C" + editColumn );
-		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
-	}
-}
+// function onEdit( e ) { // 何か操作されたとき呼ばれるコールバック関数
+// 	//操作されたセルの情報 シート名、行、列を取得
+// 	var sheet      = e.range.getSheet().getSheetName();
+// 	var editRow    = e.range.getRow();
+// 	var editColumn = e.range.getColumn();
+// 	if( sheet == 'TL' ) {
+// 		Logger.log( "Edited on R" + editRow + "C" + editColumn );
+// 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
+// 	}
+// }
 
 function onSelectionChange( e ) {
 	//操作されたセルの情報 シート名、行、列を取得
