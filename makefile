@@ -12,3 +12,15 @@ push:
 login:
 	clasp login
 
+install:
+	# wslのubuntuを想定
+	# clang-formatのインストール
+	sudo apt update
+	sudo apt install clang-format-13
+	# nvmのインストール
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+	nvm install --lts
+	# v14.18.1 が入った想定
+	nvm use v14.18.1
+	npm install -g @google/clasp
+
