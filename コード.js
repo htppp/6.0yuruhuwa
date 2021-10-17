@@ -91,7 +91,13 @@ function RecalcCell( editRow, editColumn ) {
 
 // 指定セルに関連したセルを再計算する
 function CalcCell( editRow, editColumn ) {
-	if( editRow >= 2 && editColumn >= 8 && editColumn <= 36 ) {
+
+	Logger.log( "CalcCell : Call RecallCell(" + exitRow + "," + i + 3 + ")" );
+	Logger.log( "CalcCell : editRow >= 2"; editRow >= 2 );
+	Logger.log( "CalcCell : editColumn >= 8" + editColumn >= 8 );
+	Logger.log( "CalcCell : editColumn <= 36" + editColumn <= 36 );
+
+	if( editRow >= 2 && ( editColumn >= 8 && editColumn <= 36 ) ) {
 		// T1の軽減 H,I,J (8,9,10)
 		// T2の軽減 N,O,P (14,15,16)
 		// H1の軽減 U,V,W (21,22,23)
