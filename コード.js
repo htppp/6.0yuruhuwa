@@ -89,7 +89,8 @@ function RecalcCell( editRow, editColumn ) {
 	    "( " + editRow + ", " + editColumn + " )" );
 	Logger.log( "sheet_tl.getName() " + sheet_tl.getName() );
 	var value = sheet_tl.getRange( editRow, editColumn ).getFormulas();
-	if( value.slice( 0, 1 ) !== "=" ) { return; }
+	Logger.log( "value : " + value );
+	if( value !== '' ) { return; }
 	sheet_tl.getRange( editRow, editColumn ).setValue( "" );    // 一度消す
 	sheet_tl.getRange( editRow, editColumn ).setValue( value ); // 再度設定する
 	Logger.log( "-------------------" );
