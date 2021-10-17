@@ -92,6 +92,8 @@ function RecalcCell( editRow, editColumn ) {
 // 指定セルに関連したセルを再計算する
 function CalcCell( editRow, editColumn ) {
 
+	Logger.log( "CalcCell : (typeof editRow)" + ( typeof editRow ) );
+
 	Logger.log( "CalcCell : editRow, editColumn = (" + editRow + ", " + editColumn + ")" );
 	Logger.log( "CalcCell : " + Number( editRow ) + ", " + Number( editColumn ) + ")" );
 	Logger.log( "CalcCell : editRow >= 2" + editRow >= 2 );
