@@ -58,11 +58,11 @@ function GetSingleUnitReductionRate( cells ) {
 			var r  = GetRowNumberOfAction( actionName[ 0 ] );
 			var c1 = cellColumnNum[ '単体軽減' ];
 			var c2 = cellColumnNum[ '単体軽減' ];
-			Logger.log( "r", r );
-			Logger.log( "c1", c1 );
-			Logger.log( "c2", c2 );
-			Logger.log( "actions[ r ]", actions[ r ] );
-			Logger.log( "actions[ r ]", actions[ r ] );
+			Logger.log( "r : " + r );
+			Logger.log( "c1 : " + c1 );
+			Logger.log( "c2 : " + c2 );
+			Logger.log( "actions[ r ] : " + actions[ r ] );
+			Logger.log( "actions[ r ] : " + actions[ r ] );
 			rate *= actions[ r ][ c1 ];
 			rate *= actions[ r ][ c2 ];
 		}
