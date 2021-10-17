@@ -92,6 +92,7 @@ function RecalcCell( editRow, editColumn ) {
 	if( value.slice( 0, 1 ) !== "=" ) { return; }
 	sheet_tl.getRange( editRow, editColumn ).setValue( "" );    // 一度消す
 	sheet_tl.getRange( editRow, editColumn ).setValue( value ); // 再度設定する
+	Logger.log( "-------------------" );
 }
 
 // 指定セルに関連したセルを再計算する
