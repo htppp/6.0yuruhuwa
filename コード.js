@@ -46,16 +46,11 @@ function GetSingleUnitReductionRate( cells ) {
 	Logger.log( "GetSingleUnitReductionRate : cellsArray : " + cellsArray );
 	var rate = 1.0;
 	cellsArray.forEach( function( actionName ) {
-		Logger.log( 'actionName:' + actionName[ 0 ] + ',' );
-		console.log( "actionName : " + actionName );
-		console.log( "actions : " + actions );
-		console.log( "GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
-		console.log( "cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
-
-		Logger.log( "actionName : " + actionName );
-		Logger.log( "actions : " + actions );
-		Logger.log( "GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
-		Logger.log( "cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
+		Logger.log( '|actionName:' + actionName[ 0 ] + ',' );
+		Logger.log( "|actionName : " + actionName );
+		Logger.log( "|actions : " + actions );
+		Logger.log( "|GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
+		Logger.log( "|cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
 
 		if( actionName != '' ) {
 			Logger.log( "aaa " );
