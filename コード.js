@@ -58,8 +58,9 @@ function GetSingleUnitReductionRate( cells ) {
 		Logger.log( "cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
 
 		if( actionName != '' ) {
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
+			Logger.log( "aaa " );
+			// rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
+			// rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
 		}
 	} );
 	return rate;
