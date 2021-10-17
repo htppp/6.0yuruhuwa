@@ -87,6 +87,7 @@ function RecalcCell( editRow, editColumn ) {
 	    "( editRow, editColumn ) = " +
 	    "( " + editRow + ", " + editColumn + " )" );
 	var value = sheet_tl.getRange( editRow, editColumn ).getValue(); // セルの値を取得
+	Logger.log( "value = " + value );
 	Logger.log( "value.slice( 0, 1 ) = " + value.slice( 0, 1 ) );
 	Logger.log( "value.slice( 0, 1 ) != \"=\" " + value.slice( 0, 1 ) != "=" );
 	Logger.log( "value.slice( 0, 1 ) !== \"=\" " + value.slice( 0, 1 ) !== "=" );
