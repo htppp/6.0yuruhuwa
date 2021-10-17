@@ -53,11 +53,18 @@ function GetSingleUnitReductionRate( cells ) {
 		Logger.log( "|cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
 
 		if( actionName != '' ) {
-			Logger.log( "aaa " );
 			Logger.log( "actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ] = " + actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ] );
 			Logger.log( "actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ] = " + actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ] );
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
+			var r  = GetRowNumberOfAction( actionName[ 0 ] );
+			var c1 = cellColumnNum[ '単体軽減' ];
+			var c2 = cellColumnNum[ '単体軽減' ];
+			Logger.log( "r", r );
+			Logger.log( "c1", c1 );
+			Logger.log( "c2", c2 );
+			Logger.log( "actions[ r ]", actions[ r ] );
+			Logger.log( "actions[ r ]", actions[ r ] );
+			rate *= actions[ r ][ c1 ];
+			rate *= actions[ r ][ c2 ];
 		}
 	} );
 	return rate;
