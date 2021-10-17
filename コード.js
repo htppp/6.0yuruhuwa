@@ -41,10 +41,12 @@ function test( cells ) {
 // 単体の軽減率を取得する
 // cellsには A1B2のような形式でセルの範囲を指定する
 function GetSingleUnitReductionRate( cells ) {
+	Logger.log( "GetSingleUnitReductionRate : called. cells : " + cells );
 	var cellsArray = sheet_tl.getRange( cells ).getValues();
-	var rate       = 1.0;
+	Logger.log( "GetSingleUnitReductionRate : cellsArray : " + cellsArray );
+	var rate = 1.0;
 	cellsArray.forEach( function( actionName ) {
-		console.log( 'actionNam:' + actionName[ 0 ] + ',' );
+		Logger.log( 'actionName:' + actionName[ 0 ] + ',' );
 		if( actionName != '' ) {
 			Logger.log( actionName );
 			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
