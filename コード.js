@@ -115,7 +115,8 @@ function onEdit( e ) { // 何か操作されたとき呼ばれるコールバッ
 	var editRow    = e.range.getRow();
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
-		Logger.log( "Edited on R" + editRow + "C" + editColumn );
+		Logger.log( "onEdit : R" + editRow + "C" + editColumn );
+		Logger.log( "onEdit : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
 }
@@ -126,12 +127,13 @@ function onSelectionChange( e ) {
 	var editRow    = e.range.getRow();
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
-		Logger.log( "onSelectionChange on R" + editRow + "C" + editColumn );
+		Logger.log( "onSelectionChange : R" + editRow + "C" + editColumn );
+		Logger.log( "onSelectionChange : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
 }
 
-// 以下 シート内の範囲選択したセルを再計算させるアドオン
+// 以下 シート内の範囲選択したセルを再計算させるアドオン // {{{
 // 引用元URL https://gist.github.com/katz/ab751588580469b35e08
 // サイドバーとダイアログを表示する項目を含むカスタムメニューを追加します。
 function onOpen( e ) {
@@ -170,3 +172,4 @@ function recalculate() {
 	activeRange.setValues( valuesToEraseFormula );
 	activeRange.setValues( valuesToRestoreFormula );
 }
+// }}}

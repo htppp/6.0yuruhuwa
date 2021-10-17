@@ -7,9 +7,7 @@ pull:
 
 push:
 	clang-format-13 -i コード.js
-	git add -A .
-	git commit -m "clasp pushed on `date +%Y.%m.%d.%H.%M.%S`"
-	git push origin master &
+	git add -A . && git commit -m "clasp pushed on `date +%Y.%m.%d.%H.%M.%S`" && git push origin master &
 	clasp push
 
 login:
