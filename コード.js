@@ -174,8 +174,7 @@ function onSelectionChange( e ) {
 		// Logger.log( "editRow === 1    : " + f1 );
 		// Logger.log( "editColumn === 1 : " + f2 );
 		if( f1 && f2 ) {
-			Logger.log("SpreadsheetApp.flush();
-			")
+			Logger.log( "SpreadsheetApp.flush() " );
 			SpreadsheetApp.flush();
 		}
 	}
