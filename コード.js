@@ -84,9 +84,10 @@ function CalcCell( editRow, editColumn ) {
 		// H1の軽減 U,V,W (21,22,23)
 		// H1の軽減 AA,AB,AC (27,28,29)
 		// DPSの軽減 AH,AI,AJ (34,35,36)
+		Logger.log( "CalcCell : Call RecallCell" );
 		let index = [ 8, 14, 21, 27, 34 ]; // T1, T2, H1, H2, DPSのバフ欄のそれぞれ一番左のセルの列番号
 		index.forEach( function( i ) {
-			if( editRow >= i && editRow >= i + 2 ) {
+			if( editColumn >= i && editColumn >= i + 2 ) {
 				RecalcCell( editRow, i + 3 ); // i = 8 なら K列
 				RecalcCell( editRow, i + 4 ); // i = 8 なら L列
 				RecalcCell( editRow, i + 5 ); // i = 8 なら M列
