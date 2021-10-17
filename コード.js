@@ -46,6 +46,7 @@ function GetSingleUnitReductionRate( cells ) {
 	cellsArray.forEach( function( actionName ) {
 		console.log( 'actionNam:' + actionName[ 0 ] + ',' );
 		if( actionName != '' ) {
+			Logger.log( actionName );
 			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
 			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
 		}
@@ -95,12 +96,23 @@ function CalcCell( editRow, editColumn ) {
 }
 
 function onEdit( e ) { // 何か操作されたとき呼ばれるコールバック関数
-
 	//操作されたセルの情報 シート名、行、列を取得
 	var sheet      = e.range.getSheet().getSheetName();
 	var editRow    = e.range.getRow();
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
+		Logger.log( "Edited on R" + editRow + "C" + editColumn );
+		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
+	}
+}
+
+function onClick( e ) {
+	//操作されたセルの情報 シート名、行、列を取得
+	var sheet      = e.range.getSheet().getSheetName();
+	var editRow    = e.range.getRow();
+	var editColumn = e.range.getColumn();
+	if( sheet == 'TL' ) {
+		Logger.log( "Clicked on R" + editRow + "C" + editColumn );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
 }
