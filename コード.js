@@ -49,10 +49,10 @@ function GetSingleUnitReductionRate( cells ) {
 		Logger.log( 'actionName:' + actionName[ 0 ] + ',' );
 		if( actionName != '' ) {
 
-			Browser.msgBox( "actionName : " + actionName );
-			Browser.msgBox( "actions : " + actions );
-			Browser.msgBox( "GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
-			Browser.msgBox( "cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
+			console.log( "actionName : " + actionName );
+			console.log( "actions : " + actions );
+			console.log( "GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
+			console.log( "cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
 
 			Logger.log( "actionName : " + actionName );
 			Logger.log( "actions : " + actions );
