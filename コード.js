@@ -167,10 +167,12 @@ function onSelectionChange( e ) {
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
 		// Logger.log( "onSelectionChange : R" + editRow + "C" + editColumn );
-		// Logger.log( "onSelectionChange : Call RecallCell(" + editRow + "C" + editColumn + ")" );
+		Logger.log( "onSelectionChange : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 		var f1 = editRow === 1;
 		var f2 = editColumn === 1;
+		Logger.log( "editRow === 1    : " + f1 );
+		Logger.log( "editColumn === 1 : " + f2 );
 		if( f1 && f2 ) { SpreadsheetApp.flush(); }
 	}
 }
