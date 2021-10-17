@@ -59,14 +59,14 @@ function GetSingleUnitReductionRate( cells ) {
 			if( r === -1 ) return 1; // 見つからなかった
 			var c1 = cellColumnNum[ '単体軽減' ];
 			var c2 = cellColumnNum[ '自己軽減' ];
+			rate *= actions[ r ][ c1 ];
+			rate *= actions[ r ][ c2 ];
 			// Logger.log( "r :" + r );
 			// Logger.log( "c1 : " + c1 );
 			// Logger.log( "c2 : " + c2 );
 			// Logger.log( "actions[ r ] : " + actions[ r ] );
 			// Logger.log( "actions[ r ][ c1 ] : " + actions[ r ][ c1 ] );
 			// Logger.log( "actions[ r ][ c2 ] : " + actions[ r ][ c2 ] );
-			rate *= actions[ r ][ c1 ];
-			rate *= actions[ r ][ c2 ];
 		}
 	} );
 	return rate;
@@ -82,7 +82,9 @@ function GetReductionRate( cells, index ) {
 	var cellsArray = sheet_tl.getRange( cells ).getValues();
 	var rate       = 1.0;
 	cellsArray.forEach( function( actionName ) {
-		rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ index ] ];
+		if( actionName[ 0 ] != '' ) { // 技名が入力されていなかった
+			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ index ] ];
+		}
 	} );
 	return rate;
 }
