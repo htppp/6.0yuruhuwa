@@ -88,6 +88,7 @@ function RecalcCell( editRow, editColumn ) {
 	    "RecalcCell : called. " +
 	    "( editRow, editColumn ) = " +
 	    "( " + editRow + ", " + editColumn + " )" );
+	Logger.log( "sheet_tl.getName() " + sheet_tl.getName() );
 	try {
 		var values = sheet_tl.getRange( editRow, editColumn ).getValues(); // セルの値を取得
 		var value  = sheet_tl.getRange( editRow, editColumn ).getValue();  // セルの値を取得
