@@ -169,6 +169,9 @@ function onSelectionChange( e ) {
 		// Logger.log( "onSelectionChange : R" + editRow + "C" + editColumn );
 		// Logger.log( "onSelectionChange : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
+		var f1 = editRow === 1;
+		var f2 = editColumn === 1;
+		if( f1 && f2 ) { SpreadsheetApp.flush(); }
 	}
 }
 
