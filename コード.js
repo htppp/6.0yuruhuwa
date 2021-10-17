@@ -108,7 +108,7 @@ function CalcCell( editRow, editColumn ) {
 		index.forEach( function( i ) {
 			Logger.log( "i,  f4 , f5 ) : ( " + i ", " + f4 + ", " + f5 " )" );
 			var f4 = editColumn >= i;
-			var f5 = editColumn >= i + 2;
+			var f5 = editColumn <= i + 2;
 			Logger.log( "( f4 && f5 ) :" + ( f4 && f5 ) );
 			if( f4 && f5 ) {
 				// if( editColumn >= i && editColumn <= i + 2 ) {
