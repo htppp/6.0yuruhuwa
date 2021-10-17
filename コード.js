@@ -99,11 +99,14 @@ function CalcCell( editRow, editColumn ) {
 
 	Logger.log( "CalcCell : Number(editRow) >= 2 : " + ( Number( editRow ) >= 2 ) ? "t" : "f" );
 
-	var f1 =  editRow >= 2
+	var f1 = editRow >= 2;
+	var f2 = editColumn >= 8;
+	var f3 = editColumn <= 36;
 	Logger.log( typeof f1 );
-	Logger.log( fkk1 );
+	Logger.log( f1 );
+	Logger.log( typeof f1 + "," + f1 );
 
-	if(  && ( ( editColumn >= 8 ) && ( editColumn <= 36 ) ) ) {
+	if( f1 && f2 && f3 ) {
 		// T1の軽減 H,I,J (8,9,10)
 		// T2の軽減 N,O,P (14,15,16)
 		// H1の軽減 U,V,W (21,22,23)
