@@ -20,7 +20,7 @@ const cellColumnNum = {
 
 // 技名からその技のデータが書いてある行の番号を取得する シート数値計算を参照する
 function GetRowNumberOfAction( actionName ) {
-	for( var i = 20; i < actions.length; i++ ) { // 行21からアクション名が入っている
+	for( var i = 21; i < actions.length; i++ ) { // 行21からアクション名が入っている
 		if( actions[ i ][ 1 ] === actionName ) { // 列Bにアクション名が入っている
 			return i;
 		}
