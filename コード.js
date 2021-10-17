@@ -92,7 +92,7 @@ function RecalcCell( editRow, editColumn ) {
 // 指定セルに関連したセルを再計算する
 function CalcCell( editRow, editColumn ) {
 
-	Logger.log( "CalcCell : Call RecallCell(" + exitRow + "," + i + 3 + ")" );
+	Logger.log( "CalcCell : Call RecallCell(" + editRow + "," + i + 3 + ")" );
 	Logger.log( "CalcCell : editRow >= 2" + editRow >= 2 );
 	Logger.log( "CalcCell : editColumn >= 8" + editColumn >= 8 );
 	Logger.log( "CalcCell : editColumn <= 36" + editColumn <= 36 );
@@ -106,7 +106,7 @@ function CalcCell( editRow, editColumn ) {
 		let index = [ 8, 14, 21, 27, 34 ]; // T1, T2, H1, H2, DPSのバフ欄のそれぞれ一番左のセルの列番号
 		index.forEach( function( i ) {
 			if( editColumn >= i && editColumn <= i + 2 ) {
-				Logger.log( "CalcCell : Call RecallCell(" + exitRow + "," + i + 3 + ")" );
+				Logger.log( "CalcCell : Call RecallCell(" + editRow + "," + i + 3 + ")" );
 				RecalcCell( editRow, i + 3 ); // i = 8 なら K列
 				RecalcCell( editRow, i + 4 ); // i = 8 なら L列
 				RecalcCell( editRow, i + 5 ); // i = 8 なら M列
