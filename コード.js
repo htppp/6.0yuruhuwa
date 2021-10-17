@@ -83,7 +83,7 @@ function GetReductionRate( cells, index ) {
 // 選択したセルを強制的に再計算させます
 function RecalcCell( editRow, editColumn ) {
 
-	var sheet_tl = SpreadsheetApp.getActiveSpreadsheet().getSheetByName( 'TL' );
+	// var sheet_tl = SpreadsheetApp.getActiveSpreadsheet().getSheetByName( 'TL' );
 	Logger.log(
 	    "RecalcCell : called. " +
 	    "( editRow, editColumn ) = " +
