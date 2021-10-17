@@ -6,16 +6,16 @@ var sheet_tl        = spreadsheet.getSheetByName( 'TL' );       // シートTL�
 
 // シート数値計算の20行目の項目の列数
 const cellColumnNum = {
-	'自己軽減' : 3,
-	'単体軽減' : 4,
-	'全体軽減（無条件）' : 5,
-	'全体軽減（魔法ダメ）' : 6,
-	'バリア' : 7,
-	'回復量(発動)' : 8,
-	'回復量(1tick)' : 9,
-	'hot発動数' : 10,
-	'hot総回復量(参考)' : 11,
-	'回復量(自己のみ、リキャ打ちしないもの)' : 12,
+	'自己軽減' : 4,
+	'単体軽減' : 5,
+	'全体軽減（無条件）' : 6,
+	'全体軽減（魔法ダメ）' : 7,
+	'バリア' : 8,
+	'回復量(発動)' : 9,
+	'回復量(1tick)' : 10,
+	'hot発動数' : 11,
+	'hot総回復量(参考)' : 12,
+	'回復量(自己のみ、リキャ打ちしないもの)' : 13,
 };
 
 // 技名からその技のデータが書いてある行の番号を取得する シート数値計算を参照する
@@ -47,15 +47,14 @@ function GetSingleUnitReductionRate( cells ) {
 	var rate = 1.0;
 	cellsArray.forEach( function( actionName ) {
 		Logger.log( '|actionName:' + actionName[ 0 ] + ',' );
-		Logger.log( "|actionName : " + actionName );
 		Logger.log( "|actions : " + actions );
 		Logger.log( "|GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
 		Logger.log( "|cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
 
 		if( actionName != '' ) {
 			Logger.log( "aaa " );
-			// rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
-			// rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
+			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
+			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
 		}
 	} );
 	return rate;
