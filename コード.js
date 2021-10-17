@@ -105,8 +105,10 @@ function CalcCell( editRow, editColumn ) {
 	Logger.log( typeof f1 );
 	Logger.log( f1 );
 	Logger.log( typeof f1 + "," + f1 );
+	Logger.log( "( f1 && f2 && f3 ) :" + ( f1 && f2 && f3 ) );
 
 	if( f1 && f2 && f3 ) {
+		Logger.log( "CalcCell : ( f1 && f2 && f3 ) == true" );
 		// T1の軽減 H,I,J (8,9,10)
 		// T2の軽減 N,O,P (14,15,16)
 		// H1の軽減 U,V,W (21,22,23)
