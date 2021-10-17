@@ -87,10 +87,10 @@ function GetReductionRate( cells, index ) {
 			if( r === -1 ) return 1; // 見つからなかった
 			var c = cellColumnNum[ index ];
 			rate *= actions[ r ][ c ];
-			// Logger.log( "r :" + r );
-			// Logger.log( "c : " + c );
-			// Logger.log( "actions[ r ] : " + actions[ r ] );
-			// Logger.log( "actions[ r ][ c ] : " + actions[ r ][ c ] );
+			Logger.log( "r :" + r );
+			Logger.log( "c : " + c );
+			Logger.log( "actions[ r ] : " + actions[ r ] );
+			Logger.log( "actions[ r ][ c ] : " + actions[ r ][ c ] );
 		}
 	} );
 	return rate;
