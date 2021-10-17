@@ -83,9 +83,14 @@ function GetReductionRate( cells, index ) {
 // 選択したセルを強制的に再計算させます
 function RecalcCell( editRow, editColumn ) {
 	Logger.log(
-	    "RecalcCell : called. ( editRow, editColumn ) = " +
-	    "( " + editRow + ", " + editColumn + ")" );
+	    "RecalcCell : called. " +
+	    "( editRow, editColumn ) = " +
+	    "( " + editRow + ", " + editColumn + " )" );
 	var value = sheet_tl.getRange( editRow, editColumn ).getValue(); // セルの値を取得
+	Logger.log( "value.slice( 0, 1 ) = " + value.slice( 0, 1 ) );
+	Logger.log( "value.slice( 0, 1 ) != \"=\" " + value.slice( 0, 1 ) != "=" );
+	Logger.log( "value.slice( 0, 1 ) !== \"=\" " + value.slice( 0, 1 ) !== "=" );
+	Logger.log( "value.slice( 0, 1 ) !== '=' " + value.slice( 0, 1 ) !== '=' );
 	if( value.slice( 0, 1 ) !== "=" ) { return; }
 	sheet_tl.getRange( editRow, editColumn ).setValue( "" );    // 一度消す
 	sheet_tl.getRange( editRow, editColumn ).setValue( value ); // 再度設定する
