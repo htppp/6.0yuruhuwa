@@ -177,6 +177,7 @@ function onSelectionChange( e ) {
 // サイドバーとダイアログを表示する項目を含むカスタムメニューを追加します。
 function onOpen( e ) {
 	SpreadsheetApp.getUi().createAddonMenu().addItem( 'Re-calculate selected cells', 'recalculate' ).addToUi();
+	SpreadsheetApp.flush();
 }
 
 // アドオンがインストールされているときに実行されます。
