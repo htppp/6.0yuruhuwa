@@ -96,6 +96,9 @@ function CalcCell( editRow, editColumn ) {
 	Logger.log( "CalcCell : editRow >= 2" + editRow >= 2 );
 	Logger.log( "CalcCell : editColumn >= 8" + editColumn >= 8 );
 	Logger.log( "CalcCell : editColumn <= 36" + editColumn <= 36 );
+	Logger.log( "CalcCell : editRow >== 2" + editRow >= = 2 );
+	Logger.log( "CalcCell : editColumn >== 8" + editColumn >= = 8 );
+	Logger.log( "CalcCell : editColumn <== 36" + editColumn <= = 36 );
 
 	if( editRow >= 2 && ( editColumn >= 8 && editColumn <= 36 ) ) {
 		// T1の軽減 H,I,J (8,9,10)
