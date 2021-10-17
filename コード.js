@@ -153,6 +153,7 @@ function onEdit( e ) { // 何か操作されたとき呼ばれるコールバッ
 		// Logger.log( "onEdit : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
+	SpreadsheetApp.flush();
 }
 
 function onSelectionChange( e ) {
