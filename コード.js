@@ -25,6 +25,10 @@ function GetRowNumberOfAction( actionName ) {
 			// Logger.log( "GetRowNumberOfAction(" + actionName + ") : return " + i );
 			return i;
 		}
+		if( actions[ i ][ 2 ] === actionName ) { // 列Cにアクション名の略称が入っている
+			// Logger.log( "GetRowNumberOfAction(" + actionName + ") : return " + i );
+			return i;
+		}
 	}
 	return -1;
 }
