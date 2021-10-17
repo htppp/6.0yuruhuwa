@@ -82,19 +82,22 @@ function GetReductionRate( cells, index ) {
 
 // 選択したセルを強制的に再計算させます
 function RecalcCell( editRow, editColumn ) {
-
 	// var sheet_tl = SpreadsheetApp.getActiveSpreadsheet().getSheetByName( 'TL' );
 	Logger.log(
 	    "RecalcCell : called. " +
 	    "( editRow, editColumn ) = " +
 	    "( " + editRow + ", " + editColumn + " )" );
 	Logger.log( "sheet_tl.getName() " + sheet_tl.getName() );
-	try {
-		var values = sheet_tl.getRange( editRow, editColumn ).getValues(); // セルの値を取得
-		var value  = sheet_tl.getRange( editRow, editColumn ).getValue();  // セルの値を取得
-	} catch( e ) { Logger.log( e ); }
-	var values = sheet_tl.getRange( editRow, editColumn ).getValues(); // セルの値を取得
-	var value  = sheet_tl.getRange( editRow, editColumn ).getValue();  // セルの値を取得
+	var values           = sheet_tl.getRange( editRow, editColumn ).getValues(); // セルの値を取得
+	var value            = sheet_tl.getRange( editRow, editColumn ).getValue();  // セルの値を取得
+
+	var activeRange      = sheet_tl.getRange( editRow, editColumn );
+	var originalFormulas = activeRange.getFormulas();
+	var originalValues   = activeRange.getValues();
+	Logger.log( "activeRange     " + activeRange );
+	Logger.log( "originalFormulas" + originalFormulas );
+	Logger.log( "originalValues  " + originalValues );
+
 	Logger.log( "values = " + values );
 	Logger.log( "value = " + value );
 	Logger.log( "value.slice( 0, 1 ) = " + value.slice( 0, 1 ) );
