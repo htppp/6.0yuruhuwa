@@ -83,7 +83,14 @@ function GetReductionRate( cells, index ) {
 	var rate       = 1.0;
 	cellsArray.forEach( function( actionName ) {
 		if( actionName[ 0 ] != '' ) { // 技名が入力されていなかった
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ index ] ];
+			var r = GetRowNumberOfAction( actionName[ 0 ] );
+			if( r === -1 ) return 1; // 見つからなかった
+			var c = cellColumnNum[ index ];
+			rate *= actions[ r ][ c ];
+			// Logger.log( "r :" + r );
+			// Logger.log( "c : " + c );
+			// Logger.log( "actions[ r ] : " + actions[ r ] );
+			// Logger.log( "actions[ r ][ c ] : " + actions[ r ][ c ] );
 		}
 	} );
 	return rate;
