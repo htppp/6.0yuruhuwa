@@ -52,8 +52,8 @@ function GetSingleUnitReductionRate( cells ) {
 			Logger.log( "actions : " + actions );
 			Logger.log( "GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
 			Logger.log( "cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
-			rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
+			// rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ];
+			// rate *= actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ];
 		}
 	} );
 	return rate;
@@ -65,6 +65,7 @@ function GetSingleUnitReductionRate( cells ) {
 // GetReductionRate( cells, "全体軽減（無条件）" );   // 全体軽減（無条件）を取得する
 // GetReductionRate( cells, "全体軽減（魔法ダメ）" ); // 全体軽減（魔法ダメ）を取得する
 function GetReductionRate( cells, index ) {
+	Logger.log( "GetReductionRate : called" );
 	var cellsArray = sheet_tl.getRange( cells ).getValues();
 	var rate       = 1.0;
 	cellsArray.forEach( function( actionName ) {
@@ -75,6 +76,7 @@ function GetReductionRate( cells, index ) {
 
 // 選択したセルを強制的に再計算させます
 function RecalcCell( editRow, editColumn ) {
+	Logger.log( "RecalcCell : called" );
 	var value = sheet_tl.getRange( editRow, editColumn ).getValue(); // セルの値を取得
 	if( value.slice( 0, 1 ) !== "=" ) { return; }
 	sheet_tl.getRange( editRow, editColumn ).setValue( "" );    // 一度消す
