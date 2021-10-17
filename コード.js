@@ -22,7 +22,7 @@ const cellColumnNum = {
 function GetRowNumberOfAction( actionName ) {
 	for( var i = 20; i < actions.length; i++ ) { // 行21からアクション名が入っている
 		if( actions[ i ][ 1 ] === actionName ) { // 列Bにアクション名が入っている
-			Logger.log( "GetRowNumberOfAction(" + actionName + ") : return " + i );
+			// Logger.log( "GetRowNumberOfAction(" + actionName + ") : return " + i );
 			return i;
 		}
 	}
@@ -42,28 +42,29 @@ function test( cells ) {
 // 単体の軽減率を取得する
 // cellsには A1B2のような形式でセルの範囲を指定する
 function GetSingleUnitReductionRate( cells ) {
-	Logger.log( "GetSingleUnitReductionRate : called. cells : " + cells );
+	// Logger.log( "GetSingleUnitReductionRate : called. cells : " + cells );
 	var cellsArray = sheet_tl.getRange( cells ).getValues();
-	Logger.log( "GetSingleUnitReductionRate : cellsArray : " + cellsArray );
-	var rate = 1.0;
+	// Logger.log( "GetSingleUnitReductionRate : cellsArray : " + cellsArray );
+	var rate       = 1.0;
 	cellsArray.forEach( function( actionName ) {
-		Logger.log( '|actionName:' + actionName[ 0 ] + ',' );
-		Logger.log( "|actions : " + actions );
-		Logger.log( "|GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
-		Logger.log( "|cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
+		// Logger.log( '|actionName:' + actionName[ 0 ] + ',' );
+		// Logger.log( "|actions : " + actions );
+		// Logger.log( "|GetRowNumberOfAction( actionName[ 0 ] ) : " + GetRowNumberOfAction( actionName[ 0 ] ) );
+		// Logger.log( "|cellColumnNum[ '自己軽減' ] : " + cellColumnNum[ '自己軽減' ] );
 
-		if( actionName != '' ) {
-			Logger.log( "actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ] = " + actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ] );
-			Logger.log( "actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ] = " + actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ] );
-			var r  = GetRowNumberOfAction( actionName[ 0 ] );
+		if( actionName[ 0 ] != '' ) { // 技名が入力されていなかった
+			// Logger.log( "actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ] = " + actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '単体軽減' ] ] );
+			// Logger.log( "actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ] = " + actions[ GetRowNumberOfAction( actionName[ 0 ] ) ][ cellColumnNum[ '自己軽減' ] ] );
+			var r = GetRowNumberOfAction( actionName[ 0 ] );
+			if( r === -1 ) return 1; // 見つからなかった
 			var c1 = cellColumnNum[ '単体軽減' ];
 			var c2 = cellColumnNum[ '自己軽減' ];
-			Logger.log( "r :" + r );
-			Logger.log( "c1 : " + c1 );
-			Logger.log( "c2 : " + c2 );
-			Logger.log( "actions[ r ] : " + actions[ r ] );
-			Logger.log( "actions[ r ][ c1 ] : " + actions[ r ][ c1 ] );
-			Logger.log( "actions[ r ][ c2 ] : " + actions[ r ][ c2 ] );
+			// Logger.log( "r :" + r );
+			// Logger.log( "c1 : " + c1 );
+			// Logger.log( "c2 : " + c2 );
+			// Logger.log( "actions[ r ] : " + actions[ r ] );
+			// Logger.log( "actions[ r ][ c1 ] : " + actions[ r ][ c1 ] );
+			// Logger.log( "actions[ r ][ c2 ] : " + actions[ r ][ c2 ] );
 			rate *= actions[ r ][ c1 ];
 			rate *= actions[ r ][ c2 ];
 		}
@@ -77,7 +78,7 @@ function GetSingleUnitReductionRate( cells ) {
 // GetReductionRate( cells, "全体軽減（無条件）" );   // 全体軽減（無条件）を取得する
 // GetReductionRate( cells, "全体軽減（魔法ダメ）" ); // 全体軽減（魔法ダメ）を取得する
 function GetReductionRate( cells, index ) {
-	Logger.log( "GetReductionRate : called" );
+	// Logger.log( "GetReductionRate : called" );
 	var cellsArray = sheet_tl.getRange( cells ).getValues();
 	var rate       = 1.0;
 	cellsArray.forEach( function( actionName ) {
@@ -89,19 +90,16 @@ function GetReductionRate( cells, index ) {
 // 選択したセルを強制的に再計算させます
 function RecalcCell( editRow, editColumn ) {
 	// var sheet_tl = SpreadsheetApp.getActiveSpreadsheet().getSheetByName( 'TL' );
-	Logger.log(
-	    "RecalcCell : called. " +
-	    "( editRow, editColumn ) = " +
-	    "( " + editRow + ", " + editColumn + " )" );
-	Logger.log( "sheet_tl.getName() " + sheet_tl.getName() );
+	// Logger.log( "RecalcCell : called. " + "( editRow, editColumn ) = " + "( " + editRow + ", " + editColumn + " )" );
+	// Logger.log( "sheet_tl.getName() " + sheet_tl.getName() );
 	var r     = sheet_tl.getRange( editRow, editColumn );
 	var value = r.getFormulas();
-	Logger.log( "r : " + r );
-	Logger.log( "value : " + value );
+	// Logger.log( "r : " + r );
+	// Logger.log( "value : " + value );
 	if( value !== '' ) { return; }
 	sheet_tl.getRange( editRow, editColumn ).setValue( "" );    // 一度消す
 	sheet_tl.getRange( editRow, editColumn ).setValue( value ); // 再度設定する
-	Logger.log( "-------------------" );
+	                                                            // Logger.log( "-------------------" );
 }
 
 // 指定セルに関連したセルを再計算する
@@ -113,12 +111,12 @@ function CalcCell( editRow, editColumn ) {
 	// Logger.log( "( f1 && f2 && f3 ) :" + ( f1 && f2 && f3 ) );
 
 	if( f1 && f2 && f3 ) {
-		Logger.log( "CalcCell : ( f1 && f2 && f3 ) == true" );
-		// T1の軽減 H,I,J (8,9,10)
-		// T2の軽減 N,O,P (14,15,16)
-		// H1の軽減 U,V,W (21,22,23)
-		// H1の軽減 AA,AB,AC (27,28,29)
-		// DPSの軽減 AH,AI,AJ (34,35,36)
+		// Logger.log( "CalcCell : ( f1 && f2 && f3 ) == true" );
+		//  T1の軽減 H,I,J (8,9,10)
+		//  T2の軽減 N,O,P (14,15,16)
+		//  H1の軽減 U,V,W (21,22,23)
+		//  H1の軽減 AA,AB,AC (27,28,29)
+		//  DPSの軽減 AH,AI,AJ (34,35,36)
 		let index = [ 8, 14, 21, 27, 34 ]; // T1, T2, H1, H2, DPSのバフ欄のそれぞれ一番左のセルの列番号
 		index.forEach( function( i ) {
 			var flag4 = editColumn >= i + 3;
@@ -127,7 +125,7 @@ function CalcCell( editRow, editColumn ) {
 			// Logger.log( "( flag4 && flag5 ) :" + ( flag4 && flag5 ) );
 			if( flag4 && flag5 ) {
 				// if( editColumn >= i && editColumn <= i + 2 ) {
-				Logger.log( "CalcCell : Call RecallCell(" + editRow + "," + i + 3 + ")" );
+				// Logger.log( "CalcCell : Call RecallCell(" + editRow + "," + i + 3 + ")" );
 				RecalcCell( editRow, i + 3 ); // i = 8 なら K列
 				RecalcCell( editRow, i + 4 ); // i = 8 なら L列
 				RecalcCell( editRow, i + 5 ); // i = 8 なら M列
@@ -142,8 +140,8 @@ function onEdit( e ) { // 何か操作されたとき呼ばれるコールバッ
 	var editRow    = e.range.getRow();
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
-		Logger.log( "onEdit : R" + editRow + "C" + editColumn );
-		Logger.log( "onEdit : Call RecallCell(" + editRow + "C" + editColumn + ")" );
+		// Logger.log( "onEdit : R" + editRow + "C" + editColumn );
+		// Logger.log( "onEdit : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
 }
@@ -154,8 +152,8 @@ function onSelectionChange( e ) {
 	var editRow    = e.range.getRow();
 	var editColumn = e.range.getColumn();
 	if( sheet == 'TL' ) {
-		Logger.log( "onSelectionChange : R" + editRow + "C" + editColumn );
-		Logger.log( "onSelectionChange : Call RecallCell(" + editRow + "C" + editColumn + ")" );
+		// Logger.log( "onSelectionChange : R" + editRow + "C" + editColumn );
+		// Logger.log( "onSelectionChange : Call RecallCell(" + editRow + "C" + editColumn + ")" );
 		CalcCell( editRow, editColumn ); // 編集があったセルに関連するセルを再計算する
 	}
 }
