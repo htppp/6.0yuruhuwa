@@ -106,9 +106,9 @@ function CalcCell( editRow, editColumn ) {
 		// DPSの軽減 AH,AI,AJ (34,35,36)
 		let index = [ 8, 14, 21, 27, 34 ]; // T1, T2, H1, H2, DPSのバフ欄のそれぞれ一番左のセルの列番号
 		index.forEach( function( i ) {
-			Logger.log( "i,  f4 , f5 ) : ( " + i + ", " + f4 + ", " + f5 + " )" );
 			var flag4 = editColumn >= i;
 			var flag5 = editColumn <= i + 2;
+			Logger.log( "i,  flag4 , flag5 ) : ( " + i + ", " + flag4 + ", " + flag5 + " )" );
 			Logger.log( "( flag4 && flag5 ) :" + ( flag4 && flag5 ) );
 			if( flag4 && flag5 ) {
 				// if( editColumn >= i && editColumn <= i + 2 ) {
